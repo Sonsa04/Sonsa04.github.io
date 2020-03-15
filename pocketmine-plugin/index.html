@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jason - Pocketmine Plugin</title>
+
+    <!--- Bootstrap --->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- FONT Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Fontawesome Icon -->
+    <link rel="stylesheet" href="../css/font-awesome.css">
+
+    <!--- AOS - Animate On Scroll --->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Swiper's CSS -->
+    <link rel="stylesheet" href="../css/swiper.min.css">
+
+    <!--- My Style Sheet --->
+    <link rel="stylesheet" href="../index.css?v=1">
+    
+
+
+</head>
+<body>
+
+    <section>
+        <div class="container py-5">
+            <div id="pmmpplugin-wrapper" class="row justify-content-around">
+                <!-- DATA WILL INSERT HERE -->
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div id="project-modal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+
+                        <div class="px-3 pt-3">
+                            <h5>
+                                <strong id="project-title"></strong>
+                            </h5>
+                            <p id="project-description" class="text-justify"></p>
+                        </div>
+
+                        <div style="height: 400px;">
+                            <!-- Swiper -->
+                            <div class="swiper-container" style="background: black">
+                                <div id="swiper-wrapper" class="swiper-wrapper">
+                                    <!-- DATA WILL INSERT HERE -->
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- This is from cdnjs coz i will use AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- this is from normal bootstrap website & the other one is replaced above -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!--- AOS --->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000
+        });
+    </script>
+
+    <!-- Swiper JS -->
+    <script src="../js/swiper.min.js"></script>
+
+
+    <!-- POCKETMINE PLUGIN DATA -->
+    <script type="text/javascript" src="../data/pmmpplugin.js"></script>
+    <script>
+
+        loadData();
+        initializeSwiper();
+
+        function loadData(){
+            document.getElementById('pmmpplugin-wrapper').innerHTML = '';
+            pmmpplugin.forEach(function (data, index){
+                const div = document.createElement('div');
+                div.setAttribute('data-aos', 'flip-left');
+                div.setAttribute('onclick', 'showProject(' + index + ')');
+                div.id = index;
+                div.className = 'card pt-1';
+                div.style = 'width: 20rem; border: none; background: none; cursor: pointer;';
+                div.innerHTML = '<img class="card-img-top shadow" style="border-radius: 1rem; height: 12rem;" src="' + data.thumbnail + '" alt=""><div class="card-body"><h5 class="card-title text-center"><strong>' + data.name + '</strong></h5><p class="card-text text-center">' + data.type + '</p></div>';
+                document.getElementById('pmmpplugin-wrapper').appendChild(div);
+            });
+        }
+
+        function initializeSwiper(){
+            var swiper = new Swiper('.swiper-container', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+
+        function showProject(id){
+            $('#project-modal').modal('show');
+            // INSERT DATA
+            document.getElementById('project-title').innerHTML = pmmpplugin[id].name;
+            document.getElementById('project-description').innerHTML = pmmpplugin[id].description;
+            document.getElementById('swiper-wrapper').innerHTML = '';
+            pmmpplugin[id].videos.forEach(function (data, index){
+                const div = document.createElement('div');
+                div.className = 'swiper-slide';
+                div.innerHTML = '<iframe style="width: 100%; height: 100%;" src="' + data + '" frameBorder="0"></iframe>';
+                document.getElementById('swiper-wrapper').appendChild(div);
+            });
+            pmmpplugin[id].images.forEach(function (data, index){
+                const div = document.createElement('div');
+                div.className = 'swiper-slide';
+                div.innerHTML = '<img style="width: 100%; height: 100%;" src="' + data + '" alt="">';
+                document.getElementById('swiper-wrapper').appendChild(div);
+            });
+            // UPDATE SWIPER
+            var mySwiper = document.querySelector('.swiper-container').swiper;
+            mySwiper.update();
+        }
+
+    </script>
+
+
+</body>
+</html>
