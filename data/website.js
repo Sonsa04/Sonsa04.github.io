@@ -1,15 +1,34 @@
 var website = [
-    {
-        "name": "Happy Bedrock (old)",
-        "description": "Allow admin to post updates, display top leaderboards, staff application and more",
-        "type": 'Client Project',
-        "thumbnail": "../images/website/happype/thumbnail.png",
-        "videos": [],
-        "images": [
-            "../images/website/happype/1.png",
-            "../images/website/happype/2.png",
-            "../images/website/happype/3.png",
+	{
+        "name": "MCBE Tracking App",
+        "description": "User can add multiple servers. Allow user to track their server usage, player statistics, punish player & more.",
+        "type": 'Personal Project',
+        "thumbnail": "../images/website/trackingandpunishmentapp/thumbnail.png",
+        "videos": [
+			"https://www.youtube.com/embed/MV9mX5pj0xE?controls=0"
+		],
+        "images": [],
+    },
+	{
+        "name": "Custom Panel",
+        "description": "A custom panel for mcbe server. Allow user to purchase server, custom console, file manager, backup, renew and more.",
+        "type": 'Personal Project',
+        "thumbnail": "../images/website/custompanel/thumbnail.png",
+        "videos": [
+            "https://www.youtube.com/embed/q7FedyGorIc?controls=0",
+            "https://www.youtube.com/embed/F_PvOuXbCR4?controls=0"
         ],
+        "images": [],
+    },
+    {
+        "name": "TODO App",
+        "description": "Create Multiple Project, Category, Task, Due Date, Checklist, Tag, List, Project Members and more",
+        "type": 'Personal Project',
+        "thumbnail": "../images/website/todoapp/thumbnail.png",
+        "videos": [
+            "https://www.youtube.com/embed/Uluw44ixxOM?controls=0"
+        ],
+        "images": [],
     },
     {
         "name": "MCBE.io",
@@ -38,17 +57,19 @@ var website = [
         ],
         
     },
-    {
-        "name": "TODO App",
-        "description": "Create Multiple Project, Category, Task, Due Date, Checklist, Tag, List, Project Members and more",
-        "type": 'Personal Project',
-        "thumbnail": "../images/website/todoapp/thumbnail.png",
-        "videos": [
-            "https://www.youtube.com/embed/Uluw44ixxOM?controls=0"
+	{
+        "name": "Happy Bedrock (old)",
+        "description": "Allow admin to post updates, display top leaderboards, staff application and more",
+        "type": 'Client Project',
+        "thumbnail": "../images/website/happype/thumbnail.png",
+        "videos": [],
+        "images": [
+            "../images/website/happype/1.png",
+            "../images/website/happype/2.png",
+            "../images/website/happype/3.png",
         ],
-        "images": [],
     },
-    {
+	{
         "name": "FerdaMC",
         "description": "",
         "type": 'Client Project',
@@ -59,17 +80,6 @@ var website = [
             "../images/website/ferdamc/2.png",
             "../images/website/ferdamc/3.png",
         ],
-    },
-    {
-        "name": "Custom Panel",
-        "description": "A custom panel for mcbe server. Allow user to purchase server, custom console, file manager, backup, renew and more.",
-        "type": 'Personal Project',
-        "thumbnail": "../images/website/custompanel/thumbnail.png",
-        "videos": [
-            "https://www.youtube.com/embed/q7FedyGorIc?controls=0",
-            "https://www.youtube.com/embed/F_PvOuXbCR4?controls=0"
-        ],
-        "images": [],
     },
     {
         "name": "ACC Hosting",
